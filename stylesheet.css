@@ -1,0 +1,145 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ベーススタイル */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* テーマのスタイル */
+:root[data-theme="default"] {
+    --background-color: black;
+    --text-color: #00ff00;
+}
+
+:root[data-theme="dark"] {
+    --background-color: black;
+    --text-color: #ffffff;
+}
+
+:root[data-theme="light"] {
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+
+/* ターミナルスタイル */
+#terminal {
+    height: calc(100vh - 40px); /* テーマセレクタの高さを考慮 */
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* コマンド出力 */
+#output {
+    margin-bottom: 10px;
+}
+
+.output-line {
+    min-height: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* 入力ライン */
+#input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    margin-right: 8px;
+}
+
+#command-input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    flex-grow: 1;
+}
+
+/* テーマセレクタ */
+#theme-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+#theme-selector label {
+    margin-right: 10px;
+}
+
+#theme-selector select {
+    background: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: inherit;
+    padding: 2px 5px;
+    border-radius: 3px;
+    outline: none;
+    background-color: var(--background-color); /*プルダウンのカラー */   
+}
+
+/* テキストの入力中のアニメーション */
+.typing {
+    position: relative;
+}
+
+.typing::after {
+    content: '▋';
+    position: absolute;
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+    color: var(--text-color);
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* スクロールバーのスタイリング */
+#terminal::-webkit-scrollbar {
+    width: 8px;
+}
+
+#terminal::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+    background: #00aa00;
+    border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar-thumb:hover {
+    background: #00ff00;
+}
+
+/* リンクのスタイリング */
+.github-link {
+    color: var(--text-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: #66ff66;
+}
